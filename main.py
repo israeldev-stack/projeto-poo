@@ -1,75 +1,56 @@
-class Pessoa:
-    def __init__(self, nome, idade, telefone):
-        self.nome = nome
-        self.idade = idade
-        self.telefone = telefone
+from pessoa import Pessoa
+from medicamento import *
+from registros import *
+from paciente import *
+from cuidador import *
 
-    def apresentar(self):
-        return (
-            f"Nome:{self.nome} |" 
-            f"Idade:{self.idade} |" 
-            f"Telefone:{self.telefone}|"
-        )
+# Criando os objetos
+cuidador1 = Cuidador(
+    "Israel",
+    49,
+    "(51) 98186-4241",
+    "Enfermagem"
+)
 
-class Paciente(Pessoa):
-    def __init__(self,nome, idade, telefone, contato_de_emergencia):
-        super().__init__(nome, idade, telefone)
-        self.contato_de_emergencia = contato_de_emergencia
+paciente1 = Paciente(
+    "João",
+    39,
+    "(51) 98186-4241",
+    "Maria"
+)
 
-    def apresentar(self):
-        return (
-            super().apresentar() +
-            f"Contato de Emergência:{self.contato_de_emergencia}|"
-        )
-
-class Cuidador(Pessoa):
-    def __init__(self, nome, idade, telefone, especialidade):
-        super().__init__(nome, idade, telefone)
-        self.especialidade = especialidade
-
-    def apresentar(self):
-        return (
-            super().apresentar() +
-            f"Especialidade:{self.especialidade}|"
-        )
-
-Cuidador1 = Cuidador("Israel", 49, "(51)98186-4241", "Enfermagem")
-print(Cuidador1.apresentar())
-Paciente1 = Paciente("João", 39, "(51)98186-4241", "Maria")
-print(Paciente1.apresentar())
-
-class Medicamentos:
-    def __init__(
-            self,
-            nome,
-            dose,
-            horários,
-            estoque,
-            data_inicio,
-            data_fim = None
-    ):
-        self.nome = nome
-        self.dose = dose
-        self.horários = horários
-        self.estoque = estoque
-        self.data_inicio = data_inicio
-        self.data_fim = data_fim
+medicamento1 = Medicamentos(
+    "Dipirona",
+    "500mg",
+    ["08:00", "12:00", "18:00"],
+    10,
+    "2026-10-01"
+)
 
 
-    def consultar_estoque(self):
-        return self.estoque
-    def verificar_estoque_baixo(self):
-        return self.estoque <= 5
-    def apresentar(self):
-        return (
-            f"Medicamento: {self.nome}|"
-            f"Dose: {self.dose}|"
-            f"Horários: {self.horários}|"
-            f"Estoque: {self.estoque}|"
-        )
+# Apresentando as informações
+print("===== CUIDADOR =====")
+print(cuidador1.apresentar())
 
-medicamento1 = Medicamentos("Dipirona", "500mg", "08:00, 12:00, 18:00", 10, "2024-06-01")
+print("\n===== PACIENTE =====")
+print(paciente1.apresentar())
+
+print("\n===== MEDICAMENTO =====")
 print(medicamento1.apresentar())
 
-print("Estoque atual:", medicamento1.consultar_estoque())
+print("\nEstoque atual:", medicamento1.consultar_estoque())
 print("Estoque baixo?", medicamento1.verificar_estoque_baixo())
+
+
+# Registrando uma administração
+registro1 = RegistroAdministracao(
+    medicamento1,
+    cuidador1,
+    "Realizada",
+    "Administração registrada pelo cuidador."
+)
+
+print("\n===== REGISTRO DE ADMINISTRAÇÃO =====")
+print(registro1.apresentar())
+
+print("\nStatus do registro:", registro1.consultar_status())
