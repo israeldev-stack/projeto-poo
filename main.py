@@ -1,8 +1,8 @@
 from pessoa import Pessoa
-from medicamento import *
-from registros import *
-from paciente import *
-from cuidador import *
+from medicamento import Medicamentos
+from registros import RegistroAdministracao
+from cuidador import Cuidador
+from paciente import Paciente
 
 # Criando os objetos
 cuidador1 = Cuidador(
