@@ -1,6 +1,4 @@
 from datetime import datetime
-import cuidador
-import medicamento
 class RegistroAdministracao ():
     def __init__(
         self,

@@ -20,6 +20,9 @@ class Medicamentos:
         return self.estoque
     def verificar_estoque_baixo(self):
         return self.estoque <= 5
+    def baixar_estoque(self, quantidade=1):
+        self.estoque = max(0, self.estoque - quantidade)
+        return self.estoque
     def apresentar(self):
         return (
             f"Medicamento: {self.nome}|"
