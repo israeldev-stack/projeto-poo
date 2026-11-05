@@ -1,0 +1,2 @@
+# Correção de Commits
+Os commits feitos por VaultGate Installer foram feitos pela integrante do grupo Mariana Rocha, mas a mesma não estava logada, então os commits ficaram anônimos. Este documento foi criado para fim de correção.
